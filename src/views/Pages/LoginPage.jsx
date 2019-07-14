@@ -55,7 +55,7 @@ class LoginPage extends React.Component {
               <Card login className={classes[this.state.cardAnimaton]}>
                 <CardHeader
                   className={`${classes.cardHeader} ${classes.textCenter}`}
-                  color="success"
+                  color="yellow"
                 >
                   <h4 className={classes.cardTitle}>Conectarse</h4>
                   <div className={classes.socialLine}>

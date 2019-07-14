@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Material Dashboard PRO React - v1.7.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
 // ##############################
 // // // Function that converts from hex color to rgb color
 // // // Example: input = #9c27b0 => output = 156, 39, 176
@@ -141,6 +124,8 @@ const infoColor = [
   "#d9edf7"
 ];
 const roseColor = ["#e91e63", "#ec407a", "#d81b60", "#eb3573", "#c2185b"];
+const yellowColor = ["#ffd500", "#ffd500", "#ffd500", "#ffd500", "#ffd500"];
+
 const grayColor = [
   "#999",
   "#777",
@@ -234,6 +219,14 @@ const roseBoxShadow = {
     hexToRgb(roseColor[0]) +
     ",.4)"
 };
+const yellowBoxShadow = {
+  boxShadow:
+    "0 4px 20px 0 rgba(" +
+    hexToRgb(blackColor) +
+    ",.14), 0 7px 10px -5px rgba(" +
+    hexToRgb(yellowColor[0]) +
+    ",.4)"
+};
 
 const warningCardHeader = {
   background:
@@ -265,7 +258,11 @@ const roseCardHeader = {
     "linear-gradient(60deg, " + roseColor[1] + ", " + roseColor[2] + ")",
   ...roseBoxShadow
 };
-
+const yellowCardHeader = {
+  background:
+    "linear-gradient(60deg, " + yellowColor[1] + ", " + yellowColor[2] + ")",
+  ...roseBoxShadow
+};
 const card = {
   display: "inline-block",
   position: "relative",
@@ -414,12 +411,14 @@ export {
   warningBoxShadow,
   dangerBoxShadow,
   roseBoxShadow,
+  yellowBoxShadow,
   warningCardHeader,
   successCardHeader,
   dangerCardHeader,
   infoCardHeader,
   primaryCardHeader,
   roseCardHeader,
+  yellowCardHeader,
   cardActions,
   cardHeader,
   defaultBoxShadow,

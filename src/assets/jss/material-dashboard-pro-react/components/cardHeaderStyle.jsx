@@ -6,6 +6,7 @@ import {
   infoCardHeader,
   primaryCardHeader,
   roseCardHeader,
+  yellowCardHeader,
   whiteColor,
   blackColor,
   hexToRgb
@@ -17,7 +18,7 @@ const cardHeaderStyle = {
     borderBottom: "none",
     background: "transparent",
     zIndex: "3 !important",
-    "&$cardHeaderPlain,&$cardHeaderImage,&$cardHeaderContact,&$cardHeaderSignup,&$cardHeaderIcon,&$cardHeaderStats,&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader": {
+    "&$cardHeaderPlain,&$cardHeaderImage,&$cardHeaderContact,&$cardHeaderSignup,&$cardHeaderIcon,&$cardHeaderStats,&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader,&yellowCardHeader": {
       margin: "0 15px",
       padding: "0",
       position: "relative",
@@ -164,7 +165,13 @@ const cardHeaderStyle = {
     "&:not($cardHeaderText):not($cardHeaderIcon)": {
       ...roseCardHeader
     }
-  }
+  },
+  yellowCardHeader: {
+    color: whiteColor,
+    "&:not($cardHeaderText):not($cardHeaderIcon)": {
+      ...yellowCardHeader
+    }
+  } 
 };
 
 export default cardHeaderStyle;
