@@ -1,19 +1,3 @@
-/*!
-
-=========================================================
-* Material Dashboard PRO React - v1.7.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
@@ -40,7 +24,7 @@ var ps;
 class Dashboard extends React.Component {
   state = {
     mobileOpen: false,
-    miniActive: false,
+    miniActive: true,
     image: require("assets/img/sidebar-2.jpg"),
     color: "blue",
     bgColor: "black",
@@ -82,10 +66,10 @@ class Dashboard extends React.Component {
   handleBgColorClick = bgColor => {
     switch (bgColor) {
       case "white":
-        this.setState({ logo: require("assets/img/logo.svg") });
+        this.setState({ logo: require("assets/img/speed.svg") });
         break;
       default:
-        this.setState({ logo: require("assets/img/logo-white.svg") });
+        this.setState({ logo: require("assets/img/speed-white.png") });
         break;
     }
     this.setState({ bgColor: bgColor });
@@ -161,7 +145,7 @@ class Dashboard extends React.Component {
       <div className={classes.wrapper}>
         <Sidebar
           routes={routes}
-          logoText={"Creative Tim"}
+          logoText={"Next Logistics"}
           logo={this.state.logo}
           image={this.state.image}
           handleDrawerToggle={this.handleDrawerToggle}
@@ -183,7 +167,7 @@ class Dashboard extends React.Component {
           {this.getRoute() ? (
             <div className={classes.content}>
               <div className={classes.container}>
-                <Switch>
+                <Switch>              
                   {this.getRoutes(routes)}
                   <Redirect from="/admin" to="/admin/dashboard" />
                 </Switch>
@@ -198,19 +182,6 @@ class Dashboard extends React.Component {
             </div>
           )}
           {this.getRoute() ? <Footer fluid /> : null}
-          <FixedPlugin
-            handleImageClick={this.handleImageClick}
-            handleColorClick={this.handleColorClick}
-            handleBgColorClick={this.handleBgColorClick}
-            handleHasImage={this.handleHasImage}
-            color={this.state["color"]}
-            bgColor={this.state["bgColor"]}
-            bgImage={this.state["image"]}
-            handleFixedClick={this.handleFixedClick}
-            fixedClasses={this.state.fixedClasses}
-            sidebarMinimize={this.sidebarMinimize.bind(this)}
-            miniActive={this.state.miniActive}
-          />
         </div>
       </div>
     );
