@@ -1,35 +1,31 @@
-/*!
 
-=========================================================
-* Material Dashboard PRO React - v1.7.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 import PropTypes from "prop-types";
+
 // @material-ui/icons
-import Face from "@material-ui/icons/Face";
 import RecordVoiceOver from "@material-ui/icons/RecordVoiceOver";
-import Email from "@material-ui/icons/Email";
+import Checkbox from "@material-ui/core/Checkbox";
+
 
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Assignment from "@material-ui/icons/Assignment";
+
 
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import PictureUpload from "components/CustomUpload/PictureUpload.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
+
+import customSelectStyle from "assets/jss/material-dashboard-pro-react/customSelectStyle.jsx";
+import customCheckboxRadioSwitch from "assets/jss/material-dashboard-pro-react/customCheckboxRadioSwitch.jsx";
+import MaterialTable from 'material-table';
+
 
 const style = {
   infoText: {
@@ -42,13 +38,76 @@ const style = {
   },
   inputAdornment: {
     position: "relative"
-  }
+  },
+  choiche: {
+    textAlign: "center",
+    cursor: "pointer",
+    marginTop: "20px"
+  },
+  ...customSelectStyle,
+  ...customCheckboxRadioSwitch
 };
 
 class Step1 extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); 
+
     this.state = {
+      columns: [
+        { title: 'Peso (Kgs)', field: 'peso' , type: 'numeric'},
+        { title: 'Largo (Cms)', field: 'largo', type: 'numeric' },
+        { title: 'Ancho (Cms)', field: 'ancho', type: 'numeric' },
+        { title: 'Alto (Cms)', field: 'alto', type: 'numeric' },
+      ],
+      data: [
+          
+        { peso: 1, largo: 0, ancho: 0, alto: 0 },
+      ], 
+      nationalDelivery: true,
+      internationalDelivery: false,
+      documents: false,
+      packages: true,
+      envelopesNumber: "",
+      packages:[{
+        weight: "",
+        long: "",
+        width: "",
+        height: "",
+        weightCurrier: "",
+        content: "",
+        declaredValue: 0.0
+      }],
+      services:[{
+        typeService: "",
+        homeCollection: false,
+        homeDelivery: true,
+        securePackage: true,
+        packing: false
+      }],
+      origin: {
+        country: "México",
+        postalCode: "",
+        street: "",
+        extNumber: "",
+        intNumber: "",
+        suburb: "",
+        city: "",
+        cityCouncil: "",
+        references: ""
+      },
+      destination: {
+        country: "México",
+        postalCode: "",
+        street: "",
+        extNumber: "",
+        intNumber: "",
+        suburb: "",
+        city: "",
+        cityCouncil: "",
+        references: ""
+      },
+      collectDate : "",
+      collectHour: "",
       firstname: "",
       firstnameState: "",
       lastname: "",
@@ -57,6 +116,12 @@ class Step1 extends React.Component {
       emailState: ""
     };
   }
+
+
+  handleSimple = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   sendState() {
     return this.state;
   }
@@ -116,49 +181,130 @@ class Step1 extends React.Component {
     }
     return false;
   }
+
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.checked });
+  };
+
+
   render() {
     const { classes } = this.props;
     return (
-      <GridContainer justify="center">
-        <GridItem xs={12} sm={12}>
-          <h4 className={classes.infoText}>
-            Let{"'"}s start with the basic information (with validation)
-          </h4>
-        </GridItem>
+      <GridContainer justify="center">              
+              <GridItem xs={12} sm={4}>
+                <div className={classes.choiche}>
+                  <Checkbox
+                    tabIndex={-1}
+                    onClick={this.handleChange("desgin")}
+                    checkedIcon={
+                      <i
+                        className={
+                          "fas fa-pencil-alt " + classes.iconCheckboxIcon
+                        }
+                      />
+                    }
+                    icon={
+                      <i
+                        className={
+                          "fas fa-pencil-alt " + classes.iconCheckboxIcon
+                        }
+                      />
+                    }
+                    classes={{
+                      checked: classes.iconCheckboxChecked,
+                      root: classes.iconCheckbox
+                    }}
+                  />
+                  <h6>Sobres</h6>
+                </div>
+              </GridItem>
+              <GridItem xs={12} sm={4}>
+                <div className={classes.choiche}>
+                  <Checkbox
+                    tabIndex={-1}
+                    onClick={this.handleChange("code")}
+                    checkedIcon={
+                      <i
+                        className={
+                          "fas fa-terminal " + classes.iconCheckboxIcon
+                        }
+                      />
+                    }
+                    icon={
+                      <i
+                        className={
+                          "fas fa-terminal " + classes.iconCheckboxIcon
+                        }
+                      />
+                    }
+                    classes={{
+                      checked: classes.iconCheckboxChecked,
+                      root: classes.iconCheckbox
+                    }}
+                  />
+                  <h6>Paquetes</h6>
+                </div>
+              </GridItem>
+              <GridItem xs={12} sm={12}>
+              </GridItem>
         <GridItem xs={12} sm={4}>
-          <PictureUpload />
-        </GridItem>
-        <GridItem xs={12} sm={6}>
-          <CustomInput
-            success={this.state.firstnameState === "success"}
-            error={this.state.firstnameState === "error"}
-            labelText={
-              <span>
-                First Name <small>(required)</small>
-              </span>
-            }
-            id="firstname"
-            formControlProps={{
-              fullWidth: true
-            }}
-            inputProps={{
-              onChange: event => this.change(event, "firstname", "length", 3),
-              endAdornment: (
-                <InputAdornment
-                  position="end"
-                  className={classes.inputAdornment}
-                >
-                  <Face className={classes.inputAdornmentIcon} />
-                </InputAdornment>
-              )
-            }}
-          />
+        <FormControl fullWidth className={classes.selectFormControl}>
+                  <InputLabel
+                    htmlFor="simple-select"
+                    className={classes.selectLabel}
+                  >
+                    País
+                  </InputLabel>
+                  <Select
+                    MenuProps={{
+                      className: classes.selectMenu
+                    }}
+                    classes={{
+                      select: classes.select
+                    }}
+                    value={this.state.simpleSelect}
+                    onChange={this.handleSimple}
+                    inputProps={{
+                      name: "simpleSelect",
+                      id: "simple-select"
+                    }}
+                  >
+                    <MenuItem
+                      disabled
+                      classes={{
+                        root: classes.selectMenuItem
+                      }}
+                    >
+                      País
+                    </MenuItem>
+                    <MenuItem
+                      classes={{
+                        root: classes.selectMenuItem,
+                        selected: classes.selectMenuItemSelected
+                      }}
+                      value="2"
+                    >
+                      México
+                    </MenuItem>
+                    <MenuItem
+                      classes={{
+                        root: classes.selectMenuItem,
+                        selected: classes.selectMenuItemSelected
+                      }}
+                      value="3"
+                    >
+                      Estados Unidos
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+    </GridItem>
+<GridItem xs={12} sm={4}>
           <CustomInput
             success={this.state.lastnameState === "success"}
             error={this.state.lastnameState === "error"}
             labelText={
               <span>
-                Last Name <small>(required)</small>
+                Dirección, ciudad, código postal <small>(required)</small>
               </span>
             }
             id="lastname"
@@ -178,31 +324,122 @@ class Step1 extends React.Component {
             }}
           />
         </GridItem>
-        <GridItem xs={12} sm={12} md={12} lg={10}>
+        <GridItem xs={12} sm={12}>
+              </GridItem>        
+        <GridItem xs={12} sm={4}>
+        <FormControl fullWidth className={classes.selectFormControl}>
+                  <InputLabel
+                    htmlFor="simple-select"
+                    className={classes.selectLabel}
+                  >
+                    País
+                  </InputLabel>
+                  <Select
+                    MenuProps={{
+                      className: classes.selectMenu
+                    }}
+                    classes={{
+                      select: classes.select
+                    }}
+                    value={this.state.simpleSelect}
+                    onChange={this.handleSimple}
+                    inputProps={{
+                      name: "simpleSelect",
+                      id: "simple-select"
+                    }}
+                  >
+                    <MenuItem
+                      disabled
+                      classes={{
+                        root: classes.selectMenuItem
+                      }}
+                    >
+                      País
+                    </MenuItem>
+                    <MenuItem
+                      classes={{
+                        root: classes.selectMenuItem,
+                        selected: classes.selectMenuItemSelected
+                      }}
+                      value="2"
+                    >
+                      México
+                    </MenuItem>
+                    <MenuItem
+                      classes={{
+                        root: classes.selectMenuItem,
+                        selected: classes.selectMenuItemSelected
+                      }}
+                      value="3"
+                    >
+                      Estados Unidos
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+</GridItem>
+<GridItem xs={12} sm={4}>
           <CustomInput
-            success={this.state.emailState === "success"}
-            error={this.state.emailState === "error"}
+            success={this.state.lastnameState === "success"}
+            error={this.state.lastnameState === "error"}
             labelText={
               <span>
-                Email <small>(required)</small>
+                Dirección, ciudad, código postal <small>(required)</small>
               </span>
             }
-            id="email"
+            id="lastname"
             formControlProps={{
               fullWidth: true
             }}
             inputProps={{
-              onChange: event => this.change(event, "email", "email"),
+              onChange: event => this.change(event, "lastname", "length", 3),
               endAdornment: (
                 <InputAdornment
                   position="end"
                   className={classes.inputAdornment}
                 >
-                  <Email className={classes.inputAdornmentIcon} />
+                  <RecordVoiceOver className={classes.inputAdornmentIcon} />
                 </InputAdornment>
               )
             }}
           />
+        </GridItem>
+        <GridItem xs={12}>
+        </GridItem>    
+        <GridItem xs={12} >
+        <MaterialTable
+      title="Detalle de Paquetes"
+      columns={this.state.columns}
+      data={this.state.data}
+      editable={{
+        onRowAdd: newData =>
+          new Promise(resolve => {
+            setTimeout(() => {
+              resolve();
+              const data = [...this.state.data];
+              data.push(newData);
+              this.setState({ ...this.state, data });
+            }, 600);
+          }),
+        onRowUpdate: (newData, oldData) =>
+          new Promise(resolve => {
+            setTimeout(() => {
+              resolve();
+              const data = [...this.state.data];
+              data[data.indexOf(oldData)] = newData;
+              this.setState({ ...this.state, data });
+            }, 600);
+          }),
+        onRowDelete: oldData =>
+          new Promise(resolve => {
+            setTimeout(() => {
+              resolve();
+              const data = [...this.state.data];
+              data.splice(data.indexOf(oldData), 1);
+              this.setState({ ...this.state, data });
+            }, 600);
+          }),
+      }}
+    />
         </GridItem>
       </GridContainer>
     );

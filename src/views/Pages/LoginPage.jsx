@@ -45,13 +45,22 @@ class LoginPage extends React.Component {
     clearTimeout(this.timeOutFunction);
     this.timeOutFunction = null;
   }
+ 
+  callDashboard(event) {
+    console.log(event);
+    event.preventDefault();
+    //console.log(callName<);
+    this.props.history.push("/admin/dashboard");
+  
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={6} md={4}>
-            <form>
+            <form onSubmit={this.callDashboard.bind(this)}>
               <Card login className={classes[this.state.cardAnimaton]}>
                 <CardHeader
                   className={`${classes.cardHeader} ${classes.textCenter}`}
@@ -61,7 +70,7 @@ class LoginPage extends React.Component {
                   <div className={classes.socialLine}>
                     {[
                       "fab fa-facebook-square",
-                      "fab fa-twitter",
+                      "fab fa-linkedin",
                       "fab fa-google-plus"
                     ].map((prop, key) => {
                       return (
@@ -112,7 +121,7 @@ class LoginPage extends React.Component {
                   />
                 </CardBody>
                 <CardFooter className={classes.justifyContentCenter}>
-                  <Button color="rose" simple size="lg" block>
+                  <Button type="submit" color="yellow" size="lg" block>
                     Aceptar
                   </Button>
                 </CardFooter>

@@ -58,15 +58,6 @@ var dashRoutes = [
     state: "pageCollapse",
     views: [
       {
-        path: "/pricing-page",
-        name: "Origenes Frecuentes",
-        rtlName: "عالتسعير",
-        mini: "PP",
-        rtlMini: "ع",
-        component: PricingPage,
-        layout: "/auth"
-      },
-      {
         path: "/rtl-support-page",
         name: "Destinos Frecuentes",
         rtlName: "صودعم رتل",
@@ -83,6 +74,51 @@ var dashRoutes = [
         rtlMini: "تي",
         component: TimelinePage,
         layout: "/admin"
+      },
+      {
+        path: "/login-page",
+        name: "Login Page",
+        rtlName: "هعذاتسجيل الدخول",
+        mini: "L",
+        rtlMini: "هعذا",
+        component: LoginPage,
+        layout: "/auth"
+      },
+      {
+        path: "/register-page",
+        name: "Register Page",
+        rtlName: "تسجيل",
+        mini: "R",
+        rtlMini: "صع",
+        component: RegisterPage,
+        layout: "/auth"
+      },
+      {
+        path: "/lock-screen-page",
+        name: "Lock Screen Page",
+        rtlName: "اقفل الشاشة",
+        mini: "LS",
+        rtlMini: "هذاع",
+        component: LockScreenPage,
+        layout: "/auth"
+      },
+      {
+        path: "/user-page",
+        name: "User Profile",
+        rtlName: "ملف تعريفي للمستخدم",
+        mini: "UP",
+        rtlMini: "شع",
+        component: UserProfile,
+        layout: "/admin"
+      },
+      {
+        path: "/error-page",
+        name: "Error Page",
+        rtlName: "صفحة الخطأ",
+        mini: "E",
+        rtlMini: "البريد",
+        component: ErrorPage,
+        layout: "/auth"
       }
     ]
   },  
@@ -95,11 +131,11 @@ var dashRoutes = [
     layout: "/admin"
   },
   {
-    path: "/charts",
+    path: "/wizard",
     name: "Cotizador",
     rtlName: "الرسوم البيانية",
     icon: ViewComfy,
-    component: Charts,
+    component: Wizard,
     layout: "/admin"
   }
 ];

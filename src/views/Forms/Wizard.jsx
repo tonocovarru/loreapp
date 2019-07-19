@@ -1,19 +1,3 @@
-/*!
-
-=========================================================
-* Material Dashboard PRO React - v1.7.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 
 // core components
@@ -29,16 +13,17 @@ class WizardView extends React.Component {
   render() {
     return (
       <GridContainer justify="center">
-        <GridItem xs={12} sm={8}>
+        <GridItem xs={12} sm={12} md={12}>
           <Wizard
             validate
             steps={[
-              { stepName: "About", stepComponent: Step1, stepId: "about" },
-              { stepName: "Account", stepComponent: Step2, stepId: "account" },
-              { stepName: "Address", stepComponent: Step3, stepId: "address" }
+              { stepName: "Cotiza", stepComponent: Step1, stepId: "about" },
+              { stepName: "Selecciona", stepComponent: Step2, stepId: "account" },
+              { stepName: "Direcciones", stepComponent: Step3, stepId: "address" },
+              { stepName: "Imprime", stepComponent: Step3, stepId: "address" },
             ]}
-            title="Build Your Profile"
-            subtitle="This information will let us know more about you."
+            title="Cotiza tu envío"
+            subtitle="Permitenos sugerirte la mejor opción para tu envío"
             finishButtonClick={e => alert(e)}
           />
         </GridItem>

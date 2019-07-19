@@ -1,19 +1,3 @@
-/*!
-
-=========================================================
-* Material Dashboard PRO React - v1.7.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
@@ -30,12 +14,10 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
 // @material-ui/icons
-import Dashboard from "@material-ui/icons/Dashboard";
 import Menu from "@material-ui/icons/Menu";
 import PersonAdd from "@material-ui/icons/PersonAdd";
 import Fingerprint from "@material-ui/icons/Fingerprint";
 import LockOpen from "@material-ui/icons/LockOpen";
-import MonetizationOn from "@material-ui/icons/MonetizationOn";
 
 // core components
 import Button from "components/CustomButtons/Button";
@@ -68,31 +50,6 @@ class AuthNavbar extends React.Component {
     });
     var list = (
       <List className={classes.list}>
-        <ListItem className={classes.listItem}>
-          <NavLink to={"/admin/dashboard"} className={classes.navLink}>
-            <Dashboard className={classes.listItemIcon} />
-            <ListItemText
-              primary={"Dashboard"}
-              disableTypography={true}
-              className={classes.listItemText}
-            />
-          </NavLink>
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <NavLink
-            to={"/auth/pricing-page"}
-            className={cx(classes.navLink, {
-              [classes.navLinkActive]: this.activeRoute("/auth/pricing-page")
-            })}
-          >
-            <MonetizationOn className={classes.listItemIcon} />
-            <ListItemText
-              primary={"Pricing"}
-              disableTypography={true}
-              className={classes.listItemText}
-            />
-          </NavLink>
-        </ListItem>
         <ListItem className={classes.listItem}>
           <NavLink
             to={"/auth/register-page"}
@@ -155,7 +112,7 @@ class AuthNavbar extends React.Component {
           <Hidden mdUp>
             <div className={classes.flex}>
               <Button href="#" className={classes.title} color="transparent">
-                MD Pro React
+                Next Logistics
               </Button>
             </div>
           </Hidden>

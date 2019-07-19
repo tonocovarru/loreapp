@@ -9,6 +9,8 @@ import Build from "@material-ui/icons/Build";
 
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
+import Button from "components/CustomButtons/Button.jsx";
+
 
 // ##############################
 // // // stories for RTLSupport view
@@ -364,52 +366,159 @@ var rtlServer = [
 // // // data for datatables.net in DataTables view
 // #############################
 
+const dhl_logo = require("assets/img/curriers/dhl_logo.png");
+const fedex_logo = require("assets/img/curriers/fedex_logo.png");
+const ups_logo = require("assets/img/curriers/ups_logo.png");
+const paqueteexpress_logo = require("assets/img/curriers/paqueteexpress_logo.png");
+const estafeta_logo = require("assets/img/curriers/estafeta_logo.jpg");
+const next_logo = require("assets/img/curriers/next_logo.png");
+const redpack_logo = require("assets/img/curriers/redpack_logo.png");
+
+const btnDocument = [
+  { color: "info"},
+  ].map((prop, key) => {
+    return (
+      <Button
+        round
+        size="sm"
+        color={prop.color}
+        //className={classes.actionButton + " " + classes.actionButtonRound}
+        key={key}
+      >
+      Documentado
+      </Button>
+    );
+  });
+
+const btnCollected = [
+  { color: "primary"},
+  ].map((prop, key) => {
+    return (
+      <Button
+        round
+        size="sm"
+        color={prop.color}
+        //className={classes.actionButton + " " + classes.actionButtonRound}
+        key={key}
+      >
+      Recolectado
+      </Button>
+    );
+  });
+
+const btnOnRoute = [
+  { color: "success"},
+  ].map((prop, key) => {
+    return (
+      <Button
+        round
+        size="sm"
+        color={prop.color}
+        //className={classes.actionButton + " " + classes.actionButtonRound}
+        key={key}
+      >
+      En Camino
+      </Button>
+    );
+  });
+
+const btnWarning = [
+  { color: "warning"},
+  ].map((prop, key) => {
+    return (
+      <Button
+        round
+        size="sm"
+        color={prop.color}
+        //className={classes.actionButton + " " + classes.actionButtonRound}
+        key={key}
+      >
+      Retraso
+      </Button>
+    );
+  });
+
+const btnException = [
+  { color: "danger"},
+  ].map((prop, key) => {
+    return (
+      <Button
+        round
+        size="sm"
+        color={prop.color}
+        //className={classes.actionButton + " " + classes.actionButtonRound}
+        key={key}
+      >
+      Excepción
+      </Button>
+    );
+  });
+  
+const btnDelivered = [
+  { color: "success"},
+  ].map((prop, key) => {
+    return (
+      <Button
+        round
+        size="sm"
+        color={prop.color}
+        //className={classes.actionButton + " " + classes.actionButtonRound}
+        key={key}
+      >
+      Entregado
+      </Button>
+    );
+  });
+ 
+const btnReturned = [
+  { color: "rose"},
+  ].map((prop, key) => {
+    return (
+      <Button
+        round
+        size="sm"
+        color={prop.color}
+        //className={classes.actionButton + " " + classes.actionButtonRound}
+        key={key}
+      >
+      Retornado
+      </Button>
+    );
+  });
+
+
 const dataTable = {
-  headerRow: ["Name", "Position", "Office", "Age", "Actions"],
-  footerRow: ["Name", "Position", "Office", "Age", "Actions"],
+  headerRow: ["# Guía", "# ODT", "Proyecto", "Currier", "Tipo Srv","Contenido","Destino","F Envío","F Entrega","Estatus","Acciones"],
+  footerRow: ["# Guía", "# ODT", "Proyecto", "Currier", "Tipo Srv","Contenido","Destino","F Envío","F Entrega","Estatus","Acciones"],
   dataRows: [
-    ["Tiger Nixon", "System Architect", "Edinburgh", "61"],
-    ["Garrett Winters", "Accountant", "Tokyo", "63"],
-    ["Ashton Cox", "Junior Technical Author", "San Francisco", "66"],
-    ["Cedric Kelly", "Senior Javascript Developer", "Edinburgh", "22"],
-    ["Airi Satou", "Accountant", "Tokyo", "33"],
-    ["Brielle Williamson", "Integration Specialist", "New York", "61"],
-    ["Herrod Chandler", "Sales Assistant", "San Francisco", "59"],
-    ["Rhona Davidson", "Integration Specialist", "Tokyo", "55"],
-    ["Colleen Hurst", "Javascript Developer", "San Francisco", "39"],
-    ["Sonya Frost", "Software Engineer", "Edinburgh", "23"],
-    ["Jena Gaines", "Office Manager", "London", "30"],
-    ["Quinn Flynn", "Support Lead", "Edinburgh", "22"],
-    ["Charde Marshall", "Regional Director", "San Francisco", "36"],
-    ["Haley Kennedy", "Senior Marketing Designer", "London", "43"],
-    ["Tatyana Fitzpatrick", "Regional Director", "London", "19"],
-    ["Michael Silva", "Marketing Designer", "London", "66"],
-    ["Paul Byrd", "Chief Financial Officer (CFO)", "New York", "64"],
-    ["Gloria Little", "Systems Administrator", "New York", "59"],
-    ["Bradley Greer", "Software Engineer", "London", "41"],
-    ["Dai Rios", "Personnel Lead", "Edinburgh", "35"],
-    ["Jenette Caldwell", "Development Lead", "New York", "30"],
-    ["Yuri Berry", "Chief Marketing Officer (CMO)", "New York", "40"],
-    ["Caesar Vance", "Pre-Sales Support", "New York", "21"],
-    ["Doris Wilder", "Sales Assistant", "Sidney", "23"],
-    ["Angelica Ramos", "Chief Executive Officer (CEO)", "London", "47"],
-    ["Gavin Joyce", "Developer", "Edinburgh", "42"],
-    ["Jennifer Chang", "Regional Director", "Singapore", "28"],
-    ["Brenden Wagner", "Software Engineer", "San Francisco", "28"],
-    ["Fiona Green", "Chief Operating Officer (COO)", "San Francisco", "48"],
-    ["Shou Itou", "Regional Marketing", "Tokyo", "20"],
-    ["Michelle House", "Integration Specialist", "Sidney", "37"],
-    ["Suki Burks", "Developer", "London", "53"],
-    ["Prescott Bartlett", "Technical Author", "London", "27"],
-    ["Gavin Cortez", "Team Leader", "San Francisco", "22"],
-    ["Martena Mccray", "Post-Sales support", "Edinburgh", "46"],
-    ["Unity Butler", "Marketing Designer", "San Francisco", "47"],
-    ["Howard Hatfield", "Office Manager", "San Francisco", "51"],
-    ["Hope Fuentes", "Secretary", "San Francisco", "41"],
-    ["Vivian Harrell", "Financial Controller", "San Francisco", "62"],
-    ["Timothy Mooney", "Office Manager", "London", "37"],
-    ["Jackson Bradshaw", "Director", "New York", "65"],
-    ["Olivia Liang", "Support Engineer", "Singapore", "64"]
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnException],
+    ["1234567890", "123", "Buen fin", <img src={ups_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={fedex_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={next_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnWarning],
+    ["1234567890", "123", "Buen fin", <img src={ups_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={ups_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={paqueteexpress_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnWarning],
+    ["1234567890", "123", "Buen fin", <img src={estafeta_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnDelivered],
+    ["1234567890", "123", "Buen fin", <img src={estafeta_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnDelivered],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={redpack_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnDelivered],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute],
+    ["1234567890", "123", "Buen fin", <img src={dhl_logo} alt="hdl_logo" key={"flag"} />,"Normal","Sobres","GDL","01/01/2019","01/01/2019",btnOnRoute]
   ]
 };
 
